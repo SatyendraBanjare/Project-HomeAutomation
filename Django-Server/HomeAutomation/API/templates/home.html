@@ -1,0 +1,109 @@
+<html><body>
+<h1>Home</h1>
+{% load staticfiles %}
+<ul>
+    {% for list in lists %}
+    <li>{{ list.user_name }}</li>
+    <h1>{{list.label}}</h1>
+    <li><p>item1bool = {{list.Item1Bool}}</p></li>
+    <li><p>item1value = {{list.Item1Value}}</p></li>>
+
+    <li><p>item2bool = >{{list.Item2Bool}}</li>
+    <li><p>item2value = >{{list.Item2Value}}</li>>
+
+    <li><p>item3bool = >{{list.Item3Bool}}</li>
+    <li><p>item3value = >{{list.Item3Value}}</li>>
+
+    <li><p>item4bool = >{{list.Item4Bool}}</li>
+    <li><p>item4value = >{{list.Item4Value}}</li>>
+
+    <li><p>item5bool = >{{list.Item5Bool}}</li>
+    <li><p>item5value = >{{list.Item5Value}}</li>>
+
+    <li><p>item6bool = >{{list.Item6Bool}}</li>
+    <li><p>item6value = >{{list.Item6Value}}</li>>
+
+    <li><p>item7bool = >{{list.Item7Bool}}</li>
+    <li><p>item7value = >{{list.Item7Value}}</li>>
+
+    <li><p>item8bool = >{{list.Item8Bool}}</li>
+    <li><p>item8value = >>{{list.Item8Value}}</li>>
+
+    <li><p>item9bool = >{{list.Item9Bool}}</li>
+    <li><p>item9value = >{{list.Item9Value}}</li>>
+
+    <li><p>item10bool = >{{list.Item10Bool}}</li>
+    <li><p>item10value = >{{list.Item10Value}}</li>>
+    {% endfor %}
+</ul>
+{% block content %}{% endblock content %}
+
+
+  <form id="chatform">
+    <table id="chat">
+      <tbody>
+        {% for message in messages %}
+          <tr>
+            <td>{{ message.formatted_timestamp }}</td>
+            <td>{{ message.handle }}</td>
+            <td>{{ message.message }}</td>
+          </tr> 
+        {% endfor %}
+      </tbody>
+      <tfoot>
+      <tr>
+        <td>Say something:</td>
+        <td colspan=2>
+          <input id="message" type="text" placeholder="message">
+          <button type="submit" id="go">Say it</button>
+        </td>
+      </tfoot>
+    </table>
+  </form>
+
+
+<div id="thetextfield"></div>
+
+<div id="dialog-confirm" title="Empty the recycle bin?">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
+
+</body>
+<script type="text/javascript" src='{% static "jquery-1.12.1.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "websocket.js" %}'></script>
+  <script type="text/javascript" >
+  	
+  	$(function() {
+
+
+
+    // When we're using HTTPS, use WSS too.
+    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+    var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host  + window.location.pathname);
+    
+    chatsock.onmessage = function(message) {
+        var data = message.data;
+        console.log(message);
+        alert("hey there the items are updated");
+        //window.location.replace("http://localhost:8000/api/list/");
+
+       // $('#thetextfield').text(message.data);
+        
+    };
+
+    $("#chatform").on("submit", function(event) {
+        var message = {
+            handle: $('#handle').val(),
+            message: $('#message').val(),
+        }
+        chatsock.send(JSON.stringify(message));
+        $("#message").val('').focus();
+        return false;
+    });
+});
+
+
+
+  </script>
+
+</html>
