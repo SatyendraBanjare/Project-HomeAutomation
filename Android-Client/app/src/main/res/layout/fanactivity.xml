@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.android.digitalhome.FanActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Switch 1"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/textView1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+        <SeekBar
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/fseekBar1"
+            android:layout_below="@+id/textView1"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/ftoggleButton1"/>
+
+        <ToggleButton
+            android:text="ToggleButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ftoggleButton1"
+            android:layout_below="@+id/textView1"
+            android:layout_alignParentEnd="true"/>
+        <TextView
+            android:text="Switch 2"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/fseekBar1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+        <SeekBar
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/fseekBar2"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/ftoggleButton2"/>
+
+        <ToggleButton
+            android:text="ToggleButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ftoggleButton2"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentEnd="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sendbutton2"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/fseekBar2"
+            android:layout_marginEnd="77dp"
+            android:text="Send" />
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Smart Home</string>
+    <string name="main">Home</string>
+    <string name="light">Light Section</string>
+    <string name="fan">Fan Section</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
