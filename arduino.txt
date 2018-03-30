@@ -1,0 +1,24 @@
+void setup() {
+ Serial.begin(9600);
+ pinMode(12, OUTPUT);
+ pinMode(13, OUTPUT);
+}
+
+void loop() {
+  char data=Serial.read();
+  switch(data) {
+  case '1': { digitalWrite(12, HIGH);
+             digitalWrite(13, LOW);
+            break;}
+  case '2': {digitalWrite(12, LOW);
+            digitalWrite(13, HIGH);
+            break;}
+  case '3':  {digitalWrite(12, LOW);
+             digitalWrite(13, LOW);
+            break;}
+  case '4': {digitalWrite(12, HIGH);
+            digitalWrite(13, HIGH);
+            break;}
+            }
+ delay(50);
+}
