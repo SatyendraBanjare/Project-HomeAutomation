@@ -1,0 +1,1 @@
+web: gunicorn HomeAutomation.wsgi --log-file -
